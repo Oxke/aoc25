@@ -1,0 +1,1 @@
+cat input | sed 's/./& /g' |awk 'BEGIN{K=12};{sl=0; for(i=1;i<=NF;i++){while(sl>0 && s[sl]<$i && (sl+NF-i)>=K)sl--;if(sl<K){s[++sl]=$i}}; o=""; for(i=1;i<=sl;i++){o=o s[i]; s[i]=0}; print o}' | awk '{s += $0}; END {print s}'
