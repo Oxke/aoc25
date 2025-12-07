@@ -1,0 +1,1 @@
+cat input | sed 's/./& /g' | awk 'NR<3{for(i=1;i<=NF;i++){if($i=="S"){n[i]=1}}};NR>2{for(i=1;i<=NF;i++)if($i=="^"&&n[i]>0){n[i-1]+=n[i];n[i+1]+=n[i];n[i]=0}};END{for(i=1;i<=length(n);i++)r+=n[i];print r}'
